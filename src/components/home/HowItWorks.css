@@ -1,0 +1,23 @@
+/* HowItWorks.css — styles for HowItWorks.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.how__steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-8); counter-reset: step; }
+.how__steps::before {
+  content: ''; position: absolute; top: 28px; left: 6%; right: 6%; height: 1px;
+  background: repeating-linear-gradient(90deg, var(--line-strong) 0 6px, transparent 6px 12px);
+}
+.how__step { position: relative; }
+.how__marker { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--s-6); }
+.how__icon {
+  position: relative; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 18px;
+  background: var(--surface); color: var(--jade-600); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-3) var(--ease-spring), background-color var(--dur-3), color var(--dur-3);
+}
+.how__step:hover .how__icon { transform: translateY(-4px) rotate(-4deg); background: var(--ink-900); color: var(--amber-400); }
+.how__num { font-family: var(--font-display); font-style: italic; font-size: 2.6rem; line-height: 1; color: var(--line-strong); }
+.how__step h3 { font-size: var(--fs-xl); }
+.how__step p { margin-top: var(--s-3); color: var(--text-2); font-size: var(--fs-sm); }
+@media (max-width: 960px) {
+  .how__steps { grid-template-columns: repeat(2, 1fr); row-gap: var(--s-12); }
+  .how__steps::before { display: none; }
+}
+@media (max-width: 560px) { .how__steps { grid-template-columns: 1fr; } }

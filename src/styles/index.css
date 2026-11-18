@@ -1,0 +1,5 @@
+/* index.css — loads every global stylesheet in order (imported once in main.jsx). */
+@import './fonts.css';
+@import './tokens.css';
+@import './base.css';
+@import './tones.css';

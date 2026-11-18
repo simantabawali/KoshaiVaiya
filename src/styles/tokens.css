@@ -1,0 +1,116 @@
+/* ==========================================================
+   Jonaki design tokens
+   Night ink + warm paper, jade as the voice, amber as the light.
+   ========================================================== */
+/* HOW TO USE: these are CSS variables. Anywhere in CSS write var(--name), e.g.
+   color: var(--jade-600);  Change a value here and it updates across the whole site. */
+:root {
+  /* Ink (dark surfaces & text) */
+  --ink-950: #060A13;
+  --ink-900: #0B1220;
+  --ink-800: #121A2C;
+  --ink-700: #1C2640;
+  --ink-600: #2A3555;
+
+  /* Neutrals */
+  --text: #0E1526;
+  --text-2: #475069;
+  --text-3: #6B7389;
+  --paper: #F7F5F0;
+  --paper-2: #EFECE4;
+  --surface: #FFFFFF;
+  --line: rgba(14, 21, 38, 0.09);
+  --line-strong: rgba(14, 21, 38, 0.16);
+
+  /* On dark */
+  --on-dark: #F4F2EC;
+  --on-dark-2: rgba(244, 242, 236, 0.72);
+  --on-dark-3: rgba(244, 242, 236, 0.5);
+  --line-dark: rgba(244, 242, 236, 0.1);
+
+  /* Jade — primary */
+  --jade-800: #08473B;
+  --jade-700: #0B5E4D;
+  --jade-600: #0E7A63;
+  --jade-500: #159A7C;
+  --jade-300: #5FD3B3;
+  --jade-100: #CDEDE2;
+  --jade-50: #E8F5F0;
+
+  /* Amber — the firefly light */
+  --amber-600: #C77F12;
+  --amber-500: #E9A23B;
+  --amber-400: #F4B544;
+  --amber-200: #FADB98;
+  --amber-50: #FDF4E1;
+
+  /* Clay — sparing secondary */
+  --clay-600: #B8432A;
+  --clay-500: #DD6447;
+  --clay-50: #FBEAE4;
+
+  /* Iris — data accent */
+  --iris-500: #6D72E8;
+  --iris-50: #EEEEFD;
+
+  /* Typography */
+  --font-display: 'Fraunces Variable', 'Anek Bangla Variable', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans Variable', 'Hind Siliguri', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-bn-display: 'Anek Bangla Variable', 'Fraunces Variable', serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: clamp(1.4rem, 1.1rem + 1vw, 1.75rem);
+  --fs-2xl: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  --fs-3xl: clamp(2.25rem, 1.5rem + 2.8vw, 3.5rem);
+  --fs-hero: clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem);
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.25;
+  --lh-body: 1.6;
+
+  /* Spacing (4px base) */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px;
+  --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px;
+  --s-12: 48px; --s-16: 64px; --s-20: 80px; --s-24: 96px;
+  --section-y: clamp(72px, 6vw + 40px, 128px);
+
+  /* Radius */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 24px;
+  --r-2xl: 32px;
+  --r-pill: 999px;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgba(14, 21, 38, 0.06);
+  --shadow-sm: 0 1px 2px rgba(14, 21, 38, 0.05), 0 4px 12px -4px rgba(14, 21, 38, 0.08);
+  --shadow-md: 0 2px 4px rgba(14, 21, 38, 0.04), 0 12px 32px -12px rgba(14, 21, 38, 0.18);
+  --shadow-lg: 0 4px 8px rgba(14, 21, 38, 0.04), 0 32px 64px -24px rgba(14, 21, 38, 0.28);
+  --glow-amber: 0 0 0 1px rgba(244, 181, 68, 0.35), 0 10px 40px -8px rgba(244, 181, 68, 0.55);
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --header-h: 72px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-1: 150ms;
+  --dur-2: 260ms;
+  --dur-3: 520ms;
+  --dur-4: 800ms;
+}
+
+/* When the site is in Bangla, use taller lines and the Bangla display font. */
+html[lang='bn'] {
+  --lh-body: 1.75;
+  --lh-tight: 1.2;
+  --font-display: 'Anek Bangla Variable', 'Fraunces Variable', Georgia, serif;
+}

@@ -1,0 +1,38 @@
+/* CourseCover.css — styles for CourseCover.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.cover {
+  position: relative; overflow: hidden; isolation: isolate;
+  aspect-ratio: 16 / 10; border-radius: var(--r-lg);
+  background:
+    radial-gradient(120% 90% at 100% 0%, color-mix(in srgb, var(--tone-solid) 55%, transparent) 0%, transparent 60%),
+    linear-gradient(160deg, color-mix(in srgb, var(--tone-deep) 92%, #000) 0%, var(--tone-deep) 100%);
+}
+.cover--large { aspect-ratio: 16 / 9; border-radius: var(--r-xl); }
+
+.cover__glow {
+  position: absolute; width: 60%; aspect-ratio: 1; right: -10%; bottom: -30%; border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--tone-solid) 70%, transparent), transparent);
+  filter: blur(10px); opacity: 0.55; transition: transform var(--dur-4) var(--ease-out);
+}
+.cover__pattern { position: absolute; inset: 0; opacity: 0.22; z-index: -0; }
+.cover--dots .cover__pattern { background-image: radial-gradient(rgba(255,255,255,.75) 1.2px, transparent 1.4px); background-size: 18px 18px; mask-image: linear-gradient(120deg, transparent 20%, #000 90%); }
+.cover--grid .cover__pattern { background-image: linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px); background-size: 28px 28px; mask-image: radial-gradient(80% 80% at 80% 20%, #000, transparent); }
+.cover--rings .cover__pattern { background-image: repeating-radial-gradient(circle at 85% 15%, transparent 0 22px, rgba(255,255,255,.55) 22px 23px); mask-image: radial-gradient(90% 90% at 85% 15%, #000, transparent 75%); }
+.cover--waves .cover__pattern { background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(255,255,255,.4) 14px 15px); mask-image: linear-gradient(200deg, #000, transparent 70%); }
+
+.cover__glyph {
+  position: absolute; left: 7%; bottom: 4%;
+  font-family: 'Fraunces Variable', serif; font-style: italic; font-weight: 400; line-height: 1;
+  font-size: clamp(2.6rem, 5vw, 3.6rem); letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.92); text-shadow: 0 8px 30px rgba(0,0,0,.25);
+  transition: transform var(--dur-4) var(--ease-out);
+}
+.cover--large .cover__glyph { font-size: clamp(3.5rem, 8vw, 6rem); }
+
+.cover__icon {
+  position: absolute; top: 14px; right: 14px; display: grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 12px;
+  background: rgba(255,255,255,.12); color: #fff; backdrop-filter: blur(6px);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+}
+.cover--large .cover__icon { width: 48px; height: 48px; top: 20px; right: 20px; border-radius: 14px; }

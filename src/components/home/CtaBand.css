@@ -1,0 +1,24 @@
+/* CtaBand.css — styles for CtaBand.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.cta__band {
+  position: relative; overflow: hidden; isolation: isolate; padding: clamp(48px, 7vw, 96px) clamp(24px, 6vw, 88px);
+  border-radius: var(--r-2xl); background: var(--ink-900); color: var(--on-dark);
+}
+.cta__orb {
+  position: absolute; right: -6%; top: 50%; width: 460px; height: 460px; margin-top: -230px; border-radius: 50%; z-index: -1;
+  background: radial-gradient(closest-side, var(--amber-400), rgba(244,181,68,.25) 45%, transparent 72%);
+  animation: orb 6s var(--ease-in-out) infinite;
+}
+.cta__rings {
+  position: absolute; right: -6%; top: 50%; width: 760px; height: 760px; margin-top: -380px; z-index: -1; border-radius: 50%;
+  background: repeating-radial-gradient(circle, transparent 0 46px, rgba(255,255,255,.06) 46px 47px);
+}
+@keyframes orb { 50% { transform: scale(1.08); opacity: 0.85; } }
+.cta__content { max-width: 600px; }
+.cta__band h2 { font-size: var(--fs-3xl); color: var(--on-dark); }
+.cta__band p { margin-top: var(--s-4); font-size: var(--fs-md); color: var(--on-dark-2); }
+.cta__actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-8); }
+@media (max-width: 720px) {
+  .cta__orb { right: -40%; top: auto; bottom: -260px; }
+  .cta__rings { display: none; }
+}

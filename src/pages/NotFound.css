@@ -1,0 +1,10 @@
+/* NotFound.css — styles for NotFound.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.not-found { display: grid; place-items: center; min-height: 100vh; padding-top: var(--header-h); background: radial-gradient(50% 50% at 50% 40%, var(--amber-50), transparent 70%), var(--paper); }
+.not-found__inner { display: grid; justify-items: center; gap: var(--s-4); text-align: center; padding-block: var(--s-16); }
+.not-found__code { display: flex; align-items: center; gap: 8px; font-family: 'Fraunces Variable', serif; font-size: clamp(6rem, 18vw, 11rem); line-height: 1; letter-spacing: -0.05em; color: var(--ink-900); }
+.not-found__orb { display: grid; place-items: center; width: 0.8em; height: 0.8em; border-radius: 50%; background: var(--amber-400); color: var(--ink-900); box-shadow: var(--glow-amber); animation: wobble 6s var(--ease-in-out) infinite; }
+@keyframes wobble { 50% { transform: rotate(25deg) scale(1.04); } }
+.not-found h1 { font-size: var(--fs-2xl); }
+.not-found p { color: var(--text-2); max-width: 420px; }
+.not-found__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-3); margin-top: var(--s-4); }

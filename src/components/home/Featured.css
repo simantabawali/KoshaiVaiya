@@ -1,0 +1,8 @@
+/* Featured.css — styles for Featured.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-6); }
+.featured__grid { margin-top: var(--s-8); }
+.featured__item { animation: cardIn var(--dur-4) var(--ease-out) both; animation-delay: calc(var(--i) * 70ms); }
+@keyframes cardIn { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: none; } }
+@media (max-width: 1024px) { .course-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .course-grid { grid-template-columns: 1fr; } }

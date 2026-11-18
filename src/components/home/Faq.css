@@ -1,0 +1,6 @@
+/* Faq.css — styles for Faq.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.faq__inner { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.faq__header { position: sticky; top: calc(var(--header-h) + 32px); }
+.faq__list { border-top: 1px solid var(--line); }
+@media (max-width: 860px) { .faq__inner { grid-template-columns: 1fr; gap: 0; } .faq__header { position: static; } }

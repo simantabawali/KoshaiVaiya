@@ -1,0 +1,9 @@
+/* Self-hosted fonts (no third-party requests; works offline once cached).
+   unicode-range in each file means browsers only download the scripts a page uses. */
+@import '@fontsource-variable/fraunces/opsz.css';
+@import '@fontsource-variable/fraunces/opsz-italic.css';
+@import '@fontsource-variable/plus-jakarta-sans/index.css';
+@import '@fontsource-variable/anek-bangla/index.css';
+@import '@fontsource/hind-siliguri/400.css';
+@import '@fontsource/hind-siliguri/500.css';
+@import '@fontsource/hind-siliguri/600.css';

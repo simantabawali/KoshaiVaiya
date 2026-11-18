@@ -1,0 +1,21 @@
+/* Footer.css — styles for Footer.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.footer { position: relative; background: var(--ink-950); color: var(--on-dark-2); padding-block: var(--s-20) var(--s-8); overflow: hidden; }
+.footer::before {
+  content: ''; position: absolute; left: 50%; top: -240px; width: 900px; height: 400px; transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(21, 154, 124, 0.16), transparent); pointer-events: none;
+}
+.footer__top { position: relative; display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: var(--s-10); }
+.footer__brand p { margin-top: var(--s-5); max-width: 320px; font-size: var(--fs-sm); color: var(--on-dark-3); }
+.footer__col h3 { font-family: var(--font-sans); font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark); margin-bottom: var(--s-5); }
+.footer__col ul { display: grid; gap: var(--s-3); }
+.footer__col a { font-size: var(--fs-sm); transition: color var(--dur-2); }
+.footer__col a:hover { color: var(--amber-400); }
+.footer__bottom {
+  position: relative; display: flex; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap;
+  margin-top: var(--s-16); padding-top: var(--s-6); border-top: 1px solid var(--line-dark); font-size: var(--fs-xs); color: var(--on-dark-3);
+}
+.footer__made { display: inline-flex; align-items: center; gap: 6px; }
+.footer__made svg { color: var(--clay-500); }
+@media (max-width: 860px) { .footer__top { grid-template-columns: 1fr 1fr; } .footer__brand { grid-column: 1 / -1; } }
+@media (max-width: 480px) { .footer__top { grid-template-columns: 1fr 1fr; gap: var(--s-8); } }

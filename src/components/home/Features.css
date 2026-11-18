@@ -1,0 +1,66 @@
+/* Features.css — styles for Features.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--s-4); }
+.bento > .reveal { grid-column: span 2; }
+.bento > .bento__card--live { grid-column: span 4; grid-row: span 2; }
+
+.bento__card {
+  position: relative; display: flex; flex-direction: column; padding: var(--s-8); border-radius: var(--r-xl);
+  background: var(--surface); border: 1px solid var(--line); overflow: hidden;
+  transition: box-shadow var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+}
+.bento__card:hover { box-shadow: var(--shadow-md); }
+.bento__card h3 { margin-top: var(--s-6); font-size: var(--fs-xl); }
+.bento__card p { margin-top: var(--s-2); color: var(--text-2); font-size: var(--fs-sm); max-width: 420px; }
+.bento__icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: var(--tone-soft); color: var(--tone-fg); }
+
+.bento__card--live { background: var(--ink-900); color: var(--on-dark); border-color: transparent; }
+.bento__card--live::before {
+  content: ''; position: absolute; right: -120px; top: -120px; width: 380px; height: 380px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(21, 154, 124, .45), transparent); pointer-events: none;
+}
+.bento__card--live p { color: var(--on-dark-2); }
+.bento__icon--dark { background: rgba(255, 90, 90, .14); color: #FF7A7A; }
+.bento__schedule { position: relative; display: grid; gap: 10px; margin-top: auto; padding-top: var(--s-8); }
+.bento__schedule li {
+  display: flex; align-items: center; gap: 14px; padding: 12px 16px 12px 12px; border-radius: var(--r-lg);
+  background: rgba(255,255,255,.05); border: 1px solid var(--line-dark);
+  transition: background-color var(--dur-2), transform var(--dur-3) var(--ease-out);
+}
+.bento__schedule li:hover { background: rgba(255,255,255,.09); transform: translateX(4px); }
+.bento__schedule li div { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.bento__schedule strong { font-size: var(--fs-sm); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bento__schedule span { font-size: var(--fs-xs); color: var(--on-dark-3); }
+.bento__schedule time { flex: none; font-size: var(--fs-xs); font-weight: 700; color: var(--amber-400); }
+
+.bento__signal { display: flex; align-items: flex-end; gap: 4px; margin-top: auto; padding-top: var(--s-6); }
+.bento__signal i { width: 8px; border-radius: 3px; background: var(--jade-500); }
+.bento__signal i:nth-child(1) { height: 8px; } .bento__signal i:nth-child(2) { height: 14px; }
+.bento__signal i:nth-child(3) { height: 20px; opacity: .5; } .bento__signal i:nth-child(4) { height: 26px; opacity: .25; }
+.bento__signal span { margin-left: 10px; font-size: var(--fs-xs); font-weight: 600; color: var(--text-3); }
+
+.bento__card--lang { background: linear-gradient(160deg, var(--amber-50), var(--surface) 70%); }
+.bento__glyphs { display: flex; gap: 6px; }
+.bento__glyphs b {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; font-weight: 600; font-size: 1.3rem;
+  background: var(--ink-900); color: var(--amber-400); font-family: var(--font-display);
+}
+.bento__glyphs b[lang='bn'] { font-family: 'Anek Bangla Variable', sans-serif; background: var(--amber-400); color: var(--ink-900); }
+
+.bento__bars { display: flex; align-items: flex-end; gap: 6px; height: 64px; margin-top: auto; padding-top: var(--s-6); }
+.bento__bars i { flex: 1; height: var(--h); border-radius: 6px 6px 3px 3px; background: var(--iris-50); transition: background-color var(--dur-2); }
+.bento__bars i:nth-last-child(2) { background: var(--iris-500); }
+.bento__card:hover .bento__bars i { animation: barRise 700ms var(--ease-out) both; animation-delay: calc(var(--i) * 40ms); }
+@keyframes barRise { from { transform: scaleY(0.2); transform-origin: bottom; } to { transform: none; transform-origin: bottom; } }
+
+@media (max-width: 960px) {
+  .bento { grid-template-columns: repeat(2, 1fr); }
+  .bento > .reveal { grid-column: span 1; }
+  .bento > .bento__card--live { grid-column: span 2; grid-row: auto; }
+}
+@media (max-width: 600px) {
+  .bento { grid-template-columns: 1fr; }
+  .bento > .reveal, .bento > .bento__card--live { grid-column: auto; }
+  .bento__card { padding: var(--s-6); }
+  .bento__schedule time { display: none; }
+}

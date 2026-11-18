@@ -1,0 +1,55 @@
+/* VideoPlayer.css — styles for VideoPlayer.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.player { position: relative; border-radius: var(--r-xl); overflow: hidden; background: #05080F; box-shadow: var(--shadow-lg); }
+.player:fullscreen { border-radius: 0; display: flex; flex-direction: column; }
+.player:fullscreen .player__stage { flex: 1; aspect-ratio: auto; }
+.player__stage { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; isolation: isolate; color: #fff; text-align: left; }
+.player__bg {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(70% 90% at 85% 10%, color-mix(in srgb, var(--tone-solid) 50%, transparent), transparent 60%),
+    linear-gradient(160deg, color-mix(in srgb, var(--tone-deep) 80%, #000), var(--tone-deep));
+}
+.player__bg::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 40px 40px; mask-image: radial-gradient(70% 70% at 70% 30%, #000, transparent);
+}
+.player__glyph {
+  position: absolute; right: 6%; top: 12%; font-family: 'Fraunces Variable', serif; font-style: italic; line-height: 1;
+  font-size: clamp(4rem, 12vw, 9rem); color: rgba(255,255,255,.14); transition: transform 1.2s var(--ease-out);
+}
+.player.is-playing .player__glyph { transform: translateX(-12px) scale(1.04); }
+.player__title { position: absolute; left: 6%; bottom: 12%; max-width: 60%; font-family: var(--font-display); font-size: clamp(1.3rem, 1rem + 1.8vw, 2.4rem); line-height: 1.15; letter-spacing: -0.02em; }
+.player__big {
+  position: absolute; left: 50%; top: 50%; display: grid; place-items: center; width: 84px; height: 84px; margin: -42px 0 0 -42px;
+  border-radius: 50%; background: rgba(255,255,255,.95); color: var(--ink-900); padding-left: 4px;
+  box-shadow: 0 0 0 12px rgba(255,255,255,.12), 0 20px 50px rgba(0,0,0,.4);
+  transition: transform var(--dur-3) var(--ease-spring), opacity var(--dur-3);
+}
+.player__stage:hover .player__big { transform: scale(1.06); }
+.player.is-playing .player__big { opacity: 0; transform: scale(0.8); }
+.player__caption {
+  position: absolute; left: 50%; bottom: 7%; transform: translateX(-50%); max-width: 80%; padding: 6px 14px; border-radius: 8px;
+  background: rgba(0,0,0,.65); font-size: var(--fs-sm); font-weight: 500; text-align: center; animation: pageIn var(--dur-2) var(--ease-out);
+}
+.player.is-playing .player__title { opacity: 0.35; transition: opacity var(--dur-4); }
+
+.player__controls { display: flex; align-items: center; gap: 6px; padding: 10px 12px; background: #0A0F1A; color: var(--on-dark-2); }
+.player__btn { display: grid; place-items: center; min-width: 38px; height: 38px; border-radius: 10px; color: var(--on-dark-2); transition: background-color var(--dur-2), color var(--dur-2); }
+.player__btn:hover { background: rgba(255,255,255,.08); color: #fff; }
+.player__btn.is-on { color: var(--amber-400); }
+.player__btn--text { font-size: var(--fs-xs); font-weight: 700; padding: 0 8px; }
+.player__btn--static:hover { background: none; color: var(--on-dark-2); }
+.player__time { font-size: var(--fs-xs); font-variant-numeric: tabular-nums; white-space: nowrap; padding: 0 6px; }
+.player__track { position: relative; flex: 1; height: 22px; cursor: pointer; }
+.player__track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px; border-radius: 4px; background: rgba(255,255,255,.14); }
+.player__fill { position: absolute; left: 0; top: 50%; height: 4px; margin-top: -2px; border-radius: 4px; background: var(--amber-400); transition: width 1s linear; }
+.player__knob { position: absolute; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.4); transform: scale(0); transition: transform var(--dur-2) var(--ease-spring), left 1s linear; }
+.player__track:hover .player__knob, .player__track:focus-visible .player__knob { transform: scale(1); }
+@media (max-width: 560px) {
+  .player__btn--static { display: none; }
+  .player__time { font-size: 0.68rem; padding: 0 2px; }
+  .player__big { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
+  .player__title { display: none; }
+}

@@ -1,0 +1,53 @@
+/* Auth.css — styles for Auth.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.auth { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 100vh; background: var(--paper); }
+.auth__form-side { display: flex; flex-direction: column; padding: var(--s-6) clamp(20px, 5vw, 64px); }
+.auth__top { display: flex; align-items: center; justify-content: space-between; }
+.auth__form { width: 100%; max-width: 420px; margin: auto; padding-block: var(--s-12); }
+.auth__back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: var(--s-8); font-size: var(--fs-sm); font-weight: 600; color: var(--text-3); transition: color var(--dur-2), gap var(--dur-2); }
+.auth__back:hover { color: var(--text); gap: 10px; }
+.auth__form h1 { font-size: var(--fs-3xl); }
+.auth__sub { margin-top: var(--s-3); color: var(--text-2); }
+.auth__fields { display: grid; gap: var(--s-5); margin-top: var(--s-8); }
+.auth__row { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); margin-top: var(--s-5); font-size: var(--fs-sm); }
+.auth__check { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; min-height: 44px; }
+.auth__check input { width: 18px; height: 18px; accent-color: var(--jade-600); cursor: pointer; }
+.auth__link { font-weight: 700; color: var(--jade-600); }
+.auth__link:hover { color: var(--jade-800); text-decoration: underline; text-underline-offset: 3px; }
+.auth__form > .btn { margin-top: var(--s-6); }
+.auth__spinner { display: inline-block; width: 20px; height: 20px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,.35); border-top-color: #fff; animation: spin 700ms linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.btn.is-loading:disabled { opacity: 1; }
+.auth__switch { margin-top: var(--s-6); text-align: center; font-size: var(--fs-sm); color: var(--text-2); }
+.auth__terms { margin-top: var(--s-4); text-align: center; font-size: var(--fs-xs); color: var(--text-3); }
+
+.auth__panel {
+  position: relative; overflow: hidden; isolation: isolate; display: flex; align-items: flex-end;
+  margin: 12px; border-radius: var(--r-2xl); background: var(--ink-900); color: var(--on-dark);
+}
+.auth__panel::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 56px 56px; mask-image: radial-gradient(70% 60% at 70% 20%, #000, transparent);
+}
+.auth__orb {
+  position: absolute; z-index: -1; right: -120px; top: -100px; width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(closest-side, var(--amber-400), rgba(244,181,68,.25) 40%, transparent 70%); animation: orb 7s var(--ease-in-out) infinite;
+}
+.auth__orb::after { content: ''; position: absolute; left: -260px; top: 360px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(closest-side, rgba(21,154,124,.5), transparent); }
+@keyframes orb { 50% { transform: scale(1.08); } }
+.auth__panel-inner { padding: clamp(32px, 5vw, 72px); max-width: 560px; }
+.auth__quote-mark { display: block; font-family: 'Fraunces Variable', serif; font-size: 6rem; line-height: 0.6; color: var(--amber-400); }
+.auth__panel blockquote { margin-top: var(--s-6); font-family: var(--font-display); font-size: clamp(1.8rem, 1.2rem + 1.8vw, 2.8rem); line-height: 1.15; letter-spacing: -0.02em; }
+.auth__panel p { margin-top: var(--s-5); color: var(--on-dark-2); }
+.auth__faces { display: flex; margin-top: var(--s-8); }
+.auth__faces .avatar { margin-left: -10px; box-shadow: 0 0 0 3px var(--ink-900); animation: popIn 500ms var(--ease-spring) both; }
+.auth__faces .avatar:first-child { margin-left: 0; }
+.auth__faces .avatar:nth-child(2) { animation-delay: 80ms; } .auth__faces .avatar:nth-child(3) { animation-delay: 160ms; }
+.auth__faces .avatar:nth-child(4) { animation-delay: 240ms; } .auth__faces .avatar:nth-child(5) { animation-delay: 320ms; }
+@keyframes popIn { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 900px) {
+  .auth { grid-template-columns: 1fr; }
+  .auth__panel { display: none; }
+}

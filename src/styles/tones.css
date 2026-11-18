@@ -1,0 +1,5 @@
+/* Tone helpers: each sets a soft background, readable foreground and solid accent. */
+.tone-jade  { --tone-soft: var(--jade-50);  --tone-fg: var(--jade-700);  --tone-solid: var(--jade-500); --tone-deep: #0B3F35; }
+.tone-amber { --tone-soft: var(--amber-50); --tone-fg: #8A5A0B;          --tone-solid: var(--amber-400); --tone-deep: #4A3208; }
+.tone-clay  { --tone-soft: var(--clay-50);  --tone-fg: var(--clay-600);  --tone-solid: var(--clay-500); --tone-deep: #4D1E12; }
+.tone-iris  { --tone-soft: var(--iris-50);  --tone-fg: #3E43B5;          --tone-solid: var(--iris-500); --tone-deep: #23265E; }

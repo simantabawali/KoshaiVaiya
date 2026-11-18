@@ -1,0 +1,8 @@
+/* CategoryFilter.css — styles for CategoryFilter.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.cat-filter { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px; margin: -2px; }
+.cat-filter::-webkit-scrollbar { display: none; }
+.cat-filter .chip { flex: none; }
+@media (max-width: 620px) {
+  .cat-filter { margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+}

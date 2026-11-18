@@ -1,0 +1,17 @@
+/* QuizSection.css — styles for QuizSection.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.quiz-section { background: var(--surface); border-block: 1px solid var(--line); overflow-x: clip; }
+.quiz-section__inner { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+.quiz-section__copy h2 { font-size: var(--fs-3xl); }
+.quiz-section__sub { margin-top: var(--s-4); font-size: var(--fs-md); color: var(--text-2); max-width: 460px; }
+.quiz-section__points { display: grid; gap: var(--s-3); margin-top: var(--s-8); }
+.quiz-section__points li { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.quiz-section__points svg { color: var(--jade-500); flex: none; }
+.quiz-section__stage { position: relative; }
+.quiz-section__halo {
+  position: absolute; inset: -12% -8%; z-index: 0; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(244, 181, 68, 0.22), transparent 70%), radial-gradient(closest-side at 30% 70%, rgba(21, 154, 124, .16), transparent 70%);
+  filter: blur(20px); pointer-events: none;
+}
+.quiz-section__stage .quiz { position: relative; z-index: 1; }
+@media (max-width: 960px) { .quiz-section__inner { grid-template-columns: 1fr; } }

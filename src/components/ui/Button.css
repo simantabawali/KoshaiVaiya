@@ -1,0 +1,84 @@
+/* Button.css — styles for Button.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.btn {
+  --btn-bg: var(--ink-900);
+  --btn-fg: var(--on-dark);
+  --btn-border: transparent;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform var(--dur-2) var(--ease-out),
+    box-shadow var(--dur-2) var(--ease-out),
+    background-color var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn:disabled { opacity: 0.45; pointer-events: none; }
+
+.btn__icon { flex: none; transition: transform var(--dur-2) var(--ease-out); }
+.btn:hover .btn__icon--trail { transform: translateX(3px); }
+
+.btn--sm { min-height: 38px; padding: 0 16px; font-size: var(--fs-xs); gap: 8px; }
+.btn--lg { min-height: 54px; padding: 0 28px; font-size: var(--fs-base); }
+.btn--block { width: 100%; }
+
+/* Variants: each one just changes the --btn-bg / --btn-fg variables used by .btn above. */
+.btn--primary {
+  --btn-bg: var(--jade-600);
+  --btn-fg: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 6px 18px -8px rgba(14, 122, 99, 0.7);
+}
+.btn--primary:hover { --btn-bg: var(--jade-700); box-shadow: inset 0 1px 0 rgba(255,255,255,.18), 0 12px 28px -10px rgba(14, 122, 99, 0.75); }
+
+.btn--dark:hover { --btn-bg: var(--ink-700); box-shadow: var(--shadow-md); }
+
+.btn--secondary {
+  --btn-bg: var(--surface);
+  --btn-fg: var(--text);
+  --btn-border: var(--line-strong);
+  box-shadow: var(--shadow-xs);
+}
+.btn--secondary:hover { --btn-border: var(--text); }
+
+.btn--ghost { --btn-bg: transparent; --btn-fg: var(--text); padding-inline: 14px; }
+.btn--ghost:hover { --btn-bg: rgba(14, 21, 38, 0.06); }
+
+.btn--glow {
+  --btn-bg: var(--amber-400);
+  --btn-fg: var(--ink-900);
+  box-shadow: var(--glow-amber);
+}
+.btn--glow::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.55) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 700ms var(--ease-out);
+}
+.btn--glow:hover::before { transform: translateX(120%); }
+.btn--glow:hover { --btn-bg: var(--amber-200); }
+
+.btn--outline-light {
+  --btn-bg: rgba(255, 255, 255, 0.04);
+  --btn-fg: var(--on-dark);
+  --btn-border: rgba(244, 242, 236, 0.22);
+  backdrop-filter: blur(8px);
+}
+.btn--outline-light:hover { --btn-bg: rgba(255,255,255,.1); --btn-border: rgba(244,242,236,.5); }

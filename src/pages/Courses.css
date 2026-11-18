@@ -1,0 +1,36 @@
+/* Courses.css — styles for Courses.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.catalog-hero {
+  position: relative; padding-top: calc(var(--header-h) + clamp(40px, 5vw, 72px)); padding-bottom: var(--s-10);
+  background: radial-gradient(60% 120% at 100% 0%, var(--jade-50), transparent 60%), radial-gradient(40% 80% at 0% 100%, var(--amber-50), transparent 70%), var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.catalog-hero h1 { font-size: var(--fs-3xl); max-width: 720px; }
+.catalog-toolbar { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-8); }
+.catalog-search {
+  position: relative; flex: 1 1 340px; display: flex; align-items: center; min-height: 48px;
+  border-radius: var(--r-pill); background: var(--surface); border: 1px solid var(--line-strong); box-shadow: var(--shadow-xs);
+  transition: border-color var(--dur-2), box-shadow var(--dur-2);
+}
+.catalog-search:focus-within { border-color: var(--jade-600); box-shadow: 0 0 0 4px rgba(14,122,99,.12); }
+.catalog-search > svg { position: absolute; left: 18px; color: var(--text-3); }
+.catalog-search input { flex: 1; min-width: 0; height: 48px; padding: 0 16px 0 50px; border: 0; background: transparent; }
+.catalog-search input:focus { outline: none; }
+.catalog-search input::-webkit-search-cancel-button { display: none; }
+.catalog-search button { display: grid; place-items: center; width: 36px; height: 36px; margin-right: 6px; border-radius: 50%; color: var(--text-3); }
+.catalog-search button:hover { background: var(--paper-2); color: var(--text); }
+
+.catalog-body { padding-block: var(--s-8) var(--section-y); }
+.catalog-filters { position: sticky; top: var(--header-h); z-index: 5; padding-block: var(--s-4); margin-bottom: var(--s-2); background: linear-gradient(var(--paper) 75%, transparent); }
+.catalog-count { margin-bottom: var(--s-6); font-size: var(--fs-sm); color: var(--text-2); }
+.catalog-count strong { color: var(--text); }
+
+.catalog-empty { display: grid; justify-items: center; gap: var(--s-3); padding: var(--s-20) var(--s-6); text-align: center; border: 1.5px dashed var(--line-strong); border-radius: var(--r-xl); animation: pageIn var(--dur-3) var(--ease-out); }
+.catalog-empty__icon { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px; background: var(--paper-2); color: var(--text-3); margin-bottom: var(--s-2); }
+.catalog-empty h2 { font-size: var(--fs-xl); }
+.catalog-empty p { color: var(--text-2); margin-bottom: var(--s-3); }
+
+@media (max-width: 620px) {
+  .catalog-toolbar .select { flex: 1 1 calc(50% - 6px); padding-right: 32px; }
+  .catalog-toolbar .select__label { display: none; }
+}

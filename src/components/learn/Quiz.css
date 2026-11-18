@@ -1,0 +1,59 @@
+/* Quiz.css — styles for Quiz.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.quiz {
+  position: relative; display: flex; flex-direction: column; gap: var(--s-5);
+  padding: clamp(20px, 3vw, 32px); border-radius: var(--r-xl);
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow-lg);
+}
+.quiz__top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
+.quiz__counter { font-size: var(--fs-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
+.quiz__steps { display: flex; gap: 6px; }
+.quiz__steps span { flex: 1; height: 4px; border-radius: 4px; background: var(--line); transition: background-color var(--dur-3); }
+.quiz__steps .is-done { background: var(--jade-500); }
+.quiz__steps .is-current { background: linear-gradient(90deg, var(--jade-500) 50%, var(--line) 50%); background-size: 200% 100%; animation: stepFill 900ms var(--ease-out) forwards; }
+@keyframes stepFill { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+.quiz__question { font-family: var(--font-sans); font-size: var(--fs-lg); font-weight: 700; line-height: 1.4; letter-spacing: -0.01em; animation: pageIn var(--dur-3) var(--ease-out); }
+
+.quiz__options { display: grid; gap: 10px; }
+.quiz__option {
+  display: flex; align-items: center; gap: 14px; width: 100%; min-height: 54px; padding: 10px 14px;
+  border-radius: var(--r-md); border: 1.5px solid var(--line-strong); background: var(--surface);
+  text-align: left; font-weight: 500; color: var(--text);
+  animation: optionIn var(--dur-3) var(--ease-out) both; animation-delay: calc(var(--i) * 50ms);
+  transition: border-color var(--dur-2), background-color var(--dur-2), transform var(--dur-2) var(--ease-out), opacity var(--dur-2);
+}
+@keyframes optionIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.quiz__option:hover:not(:disabled) { border-color: var(--text); transform: translateX(2px); }
+.quiz__option:disabled { cursor: default; }
+.quiz__letter {
+  display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 9px;
+  background: var(--paper-2); font-size: var(--fs-xs); font-weight: 700; color: var(--text-2);
+  transition: all var(--dur-2);
+}
+.quiz__option.is-selected { border-color: var(--jade-600); background: var(--jade-50); }
+.quiz__option.is-selected .quiz__letter { background: var(--jade-600); color: #fff; }
+.quiz__option.is-correct { border-color: var(--jade-500); background: var(--jade-50); color: var(--jade-800); animation: pop 420ms var(--ease-spring); }
+.quiz__option.is-correct .quiz__letter { background: var(--jade-500); color: #fff; }
+.quiz__option.is-wrong { border-color: var(--clay-500); background: var(--clay-50); color: var(--clay-600); animation: shake 380ms var(--ease-out); }
+.quiz__option.is-wrong .quiz__letter { background: var(--clay-500); color: #fff; }
+.quiz__option.is-muted { opacity: 0.5; }
+@keyframes shake { 20%, 60% { transform: translateX(-4px); } 40%, 80% { transform: translateX(4px); } }
+
+.quiz__feedback { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur-3) var(--ease-out); }
+.quiz__feedback > * { overflow: hidden; }
+.quiz__feedback.is-shown { grid-template-rows: auto; padding: 14px 16px; border-radius: var(--r-md); }
+.quiz__feedback.is-shown.is-correct { background: var(--jade-50); color: var(--jade-800); }
+.quiz__feedback.is-shown.is-wrong { background: var(--amber-50); color: #6B4508; }
+.quiz__feedback strong { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-sm); }
+.quiz__feedback p { font-size: var(--fs-sm); margin-top: 2px; }
+
+.quiz__actions { display: flex; justify-content: flex-end; }
+
+.quiz--result { align-items: center; text-align: center; padding-block: var(--s-10); animation: pageIn var(--dur-3) var(--ease-out); }
+.quiz__pct { font-family: var(--font-display); font-size: 1.8rem; font-weight: 500; }
+.quiz__score-label { color: var(--text-2); }
+.quiz__score-label strong { color: var(--text); }
+.quiz__verdict { max-width: 320px; font-weight: 600; }
+.quiz__option.is-correct { animation-name: optionPop; }
+@keyframes optionPop { 50% { transform: scale(1.02); } }

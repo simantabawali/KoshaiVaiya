@@ -1,0 +1,43 @@
+/* SectionHeader.css — styles for SectionHeader.jsx.
+   Class names follow "block__element" (e.g. .card__title) and "is-…" for states (e.g. .is-open). */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--s-4);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--jade-600);
+}
+.eyebrow::before {
+  content: '';
+  width: 18px; height: 2px; border-radius: 2px;
+  background: currentColor;
+}
+html[lang='bn'] .eyebrow { letter-spacing: 0.02em; font-size: var(--fs-sm); }
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-8);
+  margin-bottom: clamp(36px, 4vw, 56px);
+}
+.section-header__text { max-width: 680px; }
+.section-header__title { font-size: var(--fs-3xl); }
+.section-header__sub { margin-top: var(--s-4); font-size: var(--fs-md); color: var(--text-2); max-width: 560px; }
+.section-header__action { flex: none; }
+
+.section-header--center { flex-direction: column; align-items: center; text-align: center; }
+.section-header--center .section-header__sub { margin-inline: auto; }
+
+.section-header--dark .section-header__title { color: var(--on-dark); }
+.section-header--dark .section-header__sub { color: var(--on-dark-2); }
+.section-header--dark .eyebrow { color: var(--amber-400); }
+
+@media (max-width: 720px) {
+  .section-header { flex-direction: column; align-items: flex-start; gap: var(--s-5); }
+  .section-header--center { align-items: center; }
+}
